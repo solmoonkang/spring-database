@@ -80,7 +80,7 @@ public class JdbcTemplateItemRepositoryV3 implements ItemRepository {
         Integer maxPrice = itemSearchCond.getMaxPrice();
         String itemName = itemSearchCond.getItemName();
 
-        SqlParameterSource sqlParameterSource = new BeanPropertySqlParameterSource(itemName);
+        SqlParameterSource sqlParameterSource = new BeanPropertySqlParameterSource(itemSearchCond);
         String sql = "select id, item_name, price, quantity from item"; // 동적 쿼리
 
         if (StringUtils.hasText(itemName) || maxPrice != null) {
