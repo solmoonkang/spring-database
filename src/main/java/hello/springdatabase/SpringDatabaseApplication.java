@@ -1,6 +1,7 @@
 package hello.springdatabase;
 
 import hello.springdatabase.config.JpaConfig;
+import hello.springdatabase.config.QuerydslConfig;
 import hello.springdatabase.config.SpringDataJpaConfig;
 import hello.springdatabase.repository.ItemRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +12,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Profile;
 
 @Slf4j
-@Import(SpringDataJpaConfig.class)
+@Import(QuerydslConfig.class)
 @SpringBootApplication(scanBasePackages = "hello.springdatabase.web")
 public class SpringDatabaseApplication {
 
