@@ -4,7 +4,6 @@ import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import hello.springdatabase.domain.Item;
-import hello.springdatabase.domain.QItem;
 import hello.springdatabase.repository.ItemRepository;
 import hello.springdatabase.repository.ItemSearchCond;
 import hello.springdatabase.repository.ItemUpdateDto;
@@ -54,7 +53,6 @@ public class JpaItemRepositoryV3 implements ItemRepository {
         String itemName = itemSearch.getItemName();
         Integer maxPrice = itemSearch.getMaxPrice();
 
-        QItem item = QItem.item;
         BooleanBuilder builder = new BooleanBuilder();
         if (StringUtils.hasText(itemName)) {
             builder.and(item.itemName.like("%" + itemName + "%"));
