@@ -1,6 +1,6 @@
 package hello.springdatabase;
 
-import hello.springdatabase.config.JdbcTemplateV3Config;
+import hello.springdatabase.config.MyBatisConfig;
 import hello.springdatabase.repository.ItemRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Profile;
 
 @Slf4j
-@Import(JdbcTemplateV3Config.class)
+@Import(MyBatisConfig.class)
 @SpringBootApplication(scanBasePackages = "hello.springdatabase.web")
 public class SpringDatabaseApplication {
 
