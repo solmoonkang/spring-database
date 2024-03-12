@@ -88,4 +88,18 @@ public class BasicTxTest {
         log.info("외부 트랜잭션 커밋");
         transactionManager.commit(outer);
     }
+
+    @Test
+    void outer_rollback() {
+        log.info("외부 트랜잭션 시작");
+        TransactionStatus outer = transactionManager.getTransaction(new DefaultTransactionAttribute());
+
+        log.info("내부 트랜잭션 시작");
+        TransactionStatus inner = transactionManager.getTransaction(new DefaultTransactionAttribute());
+        log.info("내부 트랜잭션 커밋");
+        transactionManager.commit(inner);
+
+        log.info("외부 트랜잭션 롤백");
+        transactionManager.rollback(outer);
+    }
 }
