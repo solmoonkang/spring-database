@@ -14,23 +14,23 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class RollbackTest {
 
     @Autowired
-    RollbackService service;
+    RollbackService rollbackService;
 
     @Test
     void runtimeException() {
-        assertThatThrownBy(() -> service.runtimeException())
+        assertThatThrownBy(() -> rollbackService.runtimeException())
                 .isInstanceOf(RuntimeException.class);
     }
 
     @Test
     void checkedException() {
-        assertThatThrownBy(() -> service.checkedException())
+        assertThatThrownBy(() -> rollbackService.checkedException())
                 .isInstanceOf(MyException.class);
     }
 
     @Test
     void rollbackFor() {
-        assertThatThrownBy(() -> service.rollbackFor())
+        assertThatThrownBy(() -> rollbackService.rollbackFor())
                 .isInstanceOf(MyException.class);
     }
 
@@ -45,21 +45,21 @@ public class RollbackTest {
     @Slf4j
     static class RollbackService {
 
-        //런타임 예외 발생: 롤백
+        // 런타임 예외 발생: 롤백
         @Transactional
         public void runtimeException() {
             log.info("call runtimeException");
             throw new RuntimeException();
         }
 
-        //체크 예외 발생: 커밋
+        // 체크 예외 발생: 커밋
         @Transactional
         public void checkedException() throws MyException {
             log.info("call checkedException");
             throw new MyException();
         }
 
-        //체크 예외 rollbackFor 지정: 롤백
+        // 체크 예외 rollbackFor 지정: 롤백
         @Transactional(rollbackFor = MyException.class)
         public void rollbackFor() throws MyException {
             log.info("call rollbackFor");
