@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter @Setter
 public class Order {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue
     private Long id;
 
     private String username;
